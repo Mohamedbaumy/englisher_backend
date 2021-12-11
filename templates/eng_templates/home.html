@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% load static %}
+{% load solo_tags %}
+
+{% block slider %}
+{% get_solo 'englisher.SiteConfiguration' as site_config %}
+<section id="slider" class="slider-element slider-parallax swiper_wrapper min-vh-60 min-vh-md-100 include-header">
+    <div class="slider-inner">
+
+        <div class="swiper-container swiper-parent">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide dark">
+                    <div class="container">
+                        <div class="slider-caption slider-caption-left">
+                            <h2 data-animate="fadeInUp">{{site_config.slider_title}}</h2>
+                            {% if site_config.slider_body %}
+                            <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">{{site_config.slider_body}}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="swiper-slide-bg" style="background-image: url('{{site_config.slider_image.url}}');"></div>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" data-scrollto="#content" data-offset="100" class="one-page-arrow dark"><i class="icon-angle-down infinite animated fadeInDown"></i></a>
+
+    </div>
+</section>
+{% endblock slider %}
+
+
+{% block content %}
+{% get_solo 'englisher.SiteConfiguration' as site_config %}
+<div class="container clearfix mb-5 pb-5">
+
+    <h3 class="h1 fw-semibold mb-5 text-center">Pricing Table</h3>
+
+    <div class="row pricing block-pricing-10 justify-content-center align-items-stretch">
+
+        {% for price in prices %}
+        <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+            <div class="pricing-box d-flex flex-column justify-content-between align-items-center h-100 rounded-5 pricing-simple px-5 py-0 border border-{{price.box_color}} text-center overflow-visible">
+                <h3 class="pricing-title ls0 bg-white fw-normal">{{price.title}}</h3>
+                <div class="pricing-price fw-semibold font-secondary"><span class="price-unit">€</span>{{price.price}}<span class="price-tenure font-body">monthly</span></div>
+                <div class="pricing-features">
+                    <h5 class="mb-2 fw-semibold">Plans Included:</h5>
+                    <ul class="iconlist">
+                        {{price.plan_included}}
+                    </ul>
+                </div>
+                <a href="#" class="btn btn-action btn-outline-{{price.box_color}} bg-white h-bg-dark text-dark h-text-light h-border-transparent btn-lg px-4">Free Trail for 30 Days</a>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+<div class="row clearfix align-items-stretch bottommargin-lg">
+
+    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #515875;">
+        <i class="i-plain i-xlarge mx-auto icon-user-graduate"></i>
+        <div class="counter counter-lined"><span data-from="100" data-to="{{site_config.student_number}}" data-refresh-interval="50" data-speed="2000"></span>K</div>
+        <h5>Student</h5>
+    </div>
+
+    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #576F9E;">
+        <i class="i-plain i-xlarge mx-auto icon-line-video"></i>
+        <div class="counter counter-lined"><span data-from="3000" data-to="{{site_config.free_video_number}}" data-refresh-interval="100" data-speed="2500"></span></div>
+        <h5>free Videos</h5>
+    </div>
+
+    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #6697B9;">
+        <i class="i-plain i-xlarge mx-auto icon-line2-layers"></i>
+        <div class="counter counter-lined"><span data-from="10" data-to="{{site_config.courses_number}}" data-refresh-interval="25" data-speed="3500"></span></div>
+        <h5>Cources</h5>
+    </div>
+
+    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #88C3D8;">
+        <i class="i-plain i-xlarge mx-auto icon-line2-clock"></i>
+        <div class="counter counter-lined"><span data-from="60" data-to="{{site_config.hours_number}}" data-refresh-interval="30" data-speed="2700"></span></div>
+        <h5>Hours of Studying</h5>
+    </div>
+
+</div>
+<div class="section topmargin mb-0 border-bottom-0">
+    <div class="container clearfix">
+        <div class="heading-block center m-0">
+            <h3>Our Free Videos</h3>
+        </div>
+    </div>
+</div>
+
+<div id="portfolio" class="portfolio row g-0 portfolio-reveal grid-container">
+
+    {% for video in videos %}
+    <article class="portfolio-item col-6 col-md-4 col-lg-3 pf-graphics pf-uielements">
+        <div class="grid-inner">
+            <div class="portfolio-image">
+                <a href="#">
+                    <img src="{% static 'images/portfolio/4/3.jpg' %}" alt="Mac Sunglasses">
+                </a>
+                <div class="bg-overlay">
+                    <div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item">
+                        <a href="{{video.iframe}}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item" data-lightbox="iframe"><i class="icon-line-play"></i></a>
+                    </div>
+                    <div class="bg-overlay-bg dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item"></div>
+                </div>
+            </div>
+            <div class="portfolio-desc">
+                <h3><a href="{{video.video_link}}">Mac Sunglasses</a></h3>
+            </div>
+        </div>
+    </article>
+    {% endfor %}
+</div>
+<a href="https://www.facebook.com/watch/100912285078238/268112708212095" class="button button-full button-dark center text-end bottommargin-lg">
+    <div class="container clearfix">
+        More than 100+ videos. <strong>See More</strong> <i class="icon-caret-right" style="top:4px;"></i>
+    </div>
+</a>
+{% include "testimonials.html" %}
+{% include "sponsors.html" %}
+{% endblock content %}

@@ -1,0 +1,28 @@
+<div class="section parallax dark mb-0" style="background-image: url('images/services/home-testi-bg.jpg'); padding: 100px 0;" data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
+
+    <div class="heading-block center">
+        <h3>What Clients Say?</h3>
+    </div>
+
+    <div class="fslider testimonial testimonial-full" data-animation="fade" data-arrows="false">
+        <div class="flexslider">
+            <div class="slider-wrap">
+            {% for test in testimonials %}
+                <div class="slide">
+                    <div class="testi-image">
+                        <a href="#"><img src="{{test.author_image.url}}" alt="Customer Testimonails"></a>
+                    </div>
+                    <div class="testi-content">
+                        <p>{{test.what_he_say}}</p>
+                        <div class="testi-meta">
+                            {{test.author}}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+               
+            </div>
+        </div>
+    </div>
+
+</div>

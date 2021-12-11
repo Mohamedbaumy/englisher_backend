@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% load solo_tags %}
+
+
+{% block content %}
+{% get_solo 'englisher.AboutFounder' as about_founder %}
+<div class="container">
+    <div class="row align-items-center">
+
+        <div class="col-lg-5">
+            <div class="heading-block">
+                <h1>Welcome to Englisher.<br>{{about_founder.founder_name}}</h1>
+            </div>
+            <p class="lead">{{about_founder.body}}</p>
+        </div>
+
+        <div class="col-lg-7 align-self-end">
+
+            <div class="position-relative overflow-hidden">
+                <img src="{{about_founder.founder_image.url}}" data-animate="fadeInUp" data-delay="100" alt="Chrome">
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="section my-0">
+    <div class="container">
+
+        <div class="row mt-4 col-mb-50">
+            {% for feat in features %}
+            <div class="col-lg-4">
+                <i class="i-plain color i-large {{feat.icon}} inline-block" style="margin-bottom: 15px;"></i>
+                <div class="heading-block border-bottom-0" style="margin-bottom: 15px;">
+                    <h4>{{feat.value}}</h4>
+                </div>
+                <p>{{feat.body}}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+{% include "testimonials.html" %}
+{% include "sponsors.html" %}
+{% endblock content %}
