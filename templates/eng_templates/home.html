@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load solo_tags %}
+{% load blog_tags %}
 
 {% block slider %}
 {% get_solo 'englisher.SiteConfiguration' as site_config %}
@@ -46,7 +47,7 @@
                 <div class="pricing-features">
                     <h5 class="mb-2 fw-semibold">Plans Included:</h5>
                     <ul class="iconlist">
-                        {{price.plan_included}}
+                        {{price.plan_included|markdown}}
                     </ul>
                 </div>
                 <a href="#" class="btn btn-action btn-outline-{{price.box_color}} bg-white h-bg-dark text-dark h-text-light h-border-transparent btn-lg px-4">Free Trail for 30 Days</a>
@@ -84,7 +85,7 @@
     </div>
 
 </div>
-<div class="section topmargin mb-0 border-bottom-0">
+<div class="section topmargin mb-0 border-bottom-0 page-section" id="section-videos" data-onepage-settings="{'offset':0,'speed':'1250','easing':'easeInOutExpo'}">
     <div class="container clearfix">
         <div class="heading-block center m-0">
             <h3>Our Free Videos</h3>

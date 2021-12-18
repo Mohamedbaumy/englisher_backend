@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Pricing, FreeVideo, Testimonials, Sponsor, FoundrFeature, Team
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     prices = Pricing.objects.filter(active=True)[:3]
@@ -45,7 +46,7 @@ def team(request):
     return render(request, trmplate_name, context)
     
 
-
+@login_required
 def dashboard(request):
     trmplate_name = "dashboard/base.html"
     return render(request, trmplate_name, {})

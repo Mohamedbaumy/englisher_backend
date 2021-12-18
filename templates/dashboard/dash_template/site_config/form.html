@@ -1,0 +1,261 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block title %}{% if object %}Edit {{object}}{% else %}Create New Video{% endif %}
+{% endblock title %}
+{% block pagelevelcss %}
+<link href="{% static 'dashboard/assets/css/apps/invoice-add.css' %}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{% static 'dashboard/plugins/dropify/dropify.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'dashboard/assets/css/forms/theme-checkbox-radio.cs' %}s">
+<link href="{% static 'dashboard/plugins/flatpickr/flatpickr.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'dashboard/plugins/flatpickr/custom-flatpickr.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'dashboard/assets/css/scrollspyNav.css' %}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="{% static 'dashboard/plugins/editors/markdown/simplemde.min.css' %}">
+<link href="{% static 'dashboard/plugins/file-upload/file-upload-with-preview.min.css' %}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{% static 'dashboard/assets/css/forms/switches.css' %}">
+{% endblock pagelevelcss %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'pricing-list' %}">Videos</a></li>
+<li class="breadcrumb-item active" aria-current="page"><span>{% if object %}Edit {{object}}{% else %}Create New Video{% endif %}</span></li>
+{% endblock breadcrumb %}
+
+{% block content %}
+<div class="row invoice layout-top-spacing layout-spacing">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        
+        <div class="doc-container">
+            <div class="row">
+                <div class="col-xl-9">
+                    <div class="invoice-content">
+                        <div class="invoice-detail-body"> 
+                            <div class="invoice-detail-header">
+
+                                <div class="row justify-content-around">
+                                    <div class="col-xl-12 invoice-address-company">
+
+                                        <h4>{% if object %}Update {{edit}}:-{% else %}Create New Video:-{% endif %}</h4>
+                                        
+                                        <div class="invoice-address-company-fields">
+                                            <form id="supmit-form" method="post" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                <div class="custom-file-container row" data-upload-id="myFirstImage">
+                                                    <label>{{ form.header_logo.label }}
+                                                        <a href="javascript:void(0)" class=" custom-file-container__image-clear" title="Clear Image">x</a>
+                                                    </label>
+                                                    <div class="col-sm-9 offset-sm-3">
+                                                        <label class="custom-file-container__custom-file" >
+                                                            {{ form.header_logo|add_class:'custom-file-container__custom-file__custom-file-input' }}
+                                                            <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                                            <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                                        </label>
+                                                        <div class="custom-file-container__image-preview"></div>
+                                                    </div>
+                                                    {% for error in form.header_logo.errors %}
+                                                        <span class="text-success">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="custom-file-container row" data-upload-id="myScoundImage">
+                                                    <label>{{ form.footer_logo.label }}
+                                                        <a href="javascript:void(0)" class=" custom-file-container__image-clear" title="Clear Image">x</a>
+                                                    </label>
+                                                    <div class="col-sm-9 offset-sm-3">
+                                                        <label class="custom-file-container__custom-file" >
+                                                            {{ form.footer_logo|add_class:'custom-file-container__custom-file__custom-file-input' }}
+                                                            <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                                            <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                                        </label>
+                                                        <div class="custom-file-container__image-preview"></div>
+                                                    </div>
+                                                    {% for error in form.footer_logo.errors %}
+                                                        <span class="text-success">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="form-group row pt-3">
+                                                    <label for="{{ form.footer_about.id_for_label }}" class="col-sm-3 col-form-label col-form-label-sm">{{ form.footer_about.label }}</label>
+                                                    <div class="col-sm-9">
+                                                        {{ form.footer_about|add_class:'form-control form-control-sm' }}
+                                                    </div>
+                                                    {% for error in form.footer_about.errors %}
+                                                        <span class="text-danger">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="form-group row pt-3">
+                                                    <label for="{{ form.address.id_for_label }}" class="col-sm-3 col-form-label col-form-label-sm">{{ form.address.label }}</label>
+                                                    <div class="col-sm-9">
+                                                        {{ form.address|add_class:'form-control form-control-sm' }}
+                                                    </div>
+                                                    {% for error in form.address.errors %}
+                                                        <span class="text-danger">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="form-group row pt-3">
+                                                    <label for="{{ form.phone.id_for_label }}" class="col-sm-3 col-form-label col-form-label-sm">{{ form.phone.label }}</label>
+                                                    <div class="col-sm-9">
+                                                        {{ form.phone|add_class:'form-control form-control-sm' }}
+                                                    </div>
+                                                    {% for error in form.phone.errors %}
+                                                        <span class="text-danger">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="form-group row pt-3">
+                                                    <label for="{{ form.email.id_for_label }}" class="col-sm-3 col-form-label col-form-label-sm">{{ form.email.label }}</label>
+                                                    <div class="col-sm-9">
+                                                        {{ form.email|add_class:'form-control form-control-sm' }}
+                                                    </div>
+                                                    {% for error in form.email.errors %}
+                                                        <span class="text-danger">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="form-group row pt-3">
+                                                    <label for="{{ form.facebook_page.id_for_label }}" class="col-sm-3 col-form-label col-form-label-sm">{{ form.facebook_page.label }}</label>
+                                                    <div class="col-sm-9">
+                                                        {{ form.facebook_page|add_class:'form-control form-control-sm' }}
+                                                    </div>
+                                                    {% for error in form.facebook_page.errors %}
+                                                        <span class="text-danger">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="form-group row pt-3">
+                                                    <label for="{{ form.youtube_channel.id_for_label }}" class="col-sm-3 col-form-label col-form-label-sm">{{ form.youtube_channel.label }}</label>
+                                                    <div class="col-sm-9">
+                                                        {{ form.youtube_channel|add_class:'form-control form-control-sm' }}
+                                                    </div>
+                                                    {% for error in form.youtube_channel.errors %}
+                                                        <span class="text-danger">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="custom-file-container row" data-upload-id="myThImage">
+                                                    <label>{{ form.slider_image.label }}
+                                                        <a href="javascript:void(0)" class=" custom-file-container__image-clear" title="Clear Image">x</a>
+                                                    </label>
+                                                    <div class="col-sm-9 offset-sm-3">
+                                                        <label class="custom-file-container__custom-file" >
+                                                            {{ form.slider_image|add_class:'custom-file-container__custom-file__custom-file-input' }}
+                                                            <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                                            <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                                        </label>
+                                                        <div class="custom-file-container__image-preview"></div>
+                                                    </div>
+                                                    {% for error in form.slider_image.errors %}
+                                                        <span class="text-success">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="form-group row pt-3">
+                                                    <label for="{{ form.slider_title.id_for_label }}" class="col-sm-3 col-form-label col-form-label-sm">{{ form.slider_title.label }}</label>
+                                                    <div class="col-sm-9">
+                                                        {{ form.slider_title|add_class:'form-control form-control-sm' }}
+                                                    </div>
+                                                    {% for error in form.slider_title.errors %}
+                                                        <span class="text-danger">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="form-group row pt-3">
+                                                    <label for="{{ form.slider_body.id_for_label }}" class="col-sm-3 col-form-label col-form-label-sm">{{ form.slider_body.label }}</label>
+                                                    <div class="col-sm-9">
+                                                        {{ form.slider_body|add_class:'form-control form-control-sm' }}
+                                                    </div>
+                                                    {% for error in form.slider_body.errors %}
+                                                        <span class="text-danger">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="form-group row pt-3">
+                                                    <label for="{{ form.student_number.id_for_label }}" class="col-sm-3 col-form-label col-form-label-sm">{{ form.student_number.label }}</label>
+                                                    <div class="col-sm-9">
+                                                        {{ form.student_number|add_class:'form-control form-control-sm' }}
+                                                    </div>
+                                                    {% for error in form.student_number.errors %}
+                                                        <span class="text-danger">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="form-group row pt-3">
+                                                    <label for="{{ form.free_video_number.id_for_label }}" class="col-sm-3 col-form-label col-form-label-sm">{{ form.free_video_number.label }}</label>
+                                                    <div class="col-sm-9">
+                                                        {{ form.free_video_number|add_class:'form-control form-control-sm' }}
+                                                    </div>
+                                                    {% for error in form.free_video_number.errors %}
+                                                        <span class="text-danger">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="form-group row pt-3">
+                                                    <label for="{{ form.courses_number.id_for_label }}" class="col-sm-3 col-form-label col-form-label-sm">{{ form.courses_number.label }}</label>
+                                                    <div class="col-sm-9">
+                                                        {{ form.courses_number|add_class:'form-control form-control-sm' }}
+                                                    </div>
+                                                    {% for error in form.courses_number.errors %}
+                                                        <span class="text-danger">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="form-group row pt-3">
+                                                    <label for="{{ form.hours_number.id_for_label }}" class="col-sm-3 col-form-label col-form-label-sm">{{ form.hours_number.label }}</label>
+                                                    <div class="col-sm-9">
+                                                        {{ form.hours_number|add_class:'form-control form-control-sm' }}
+                                                    </div>
+                                                    {% for error in form.hours_number.errors %}
+                                                        <span class="text-danger">{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            </form>    
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="invoice-actions-btn">
+                        <div class="invoice-action-btn">
+                            <div class="row">
+                                <div class="col-xl-12 col-md-4">
+                                    <button class="btn btn-success btn-download w-100" form="supmit-form" type="submit">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}
+
+{% block pageleveljs %}
+<script src="{% static 'dashboard/plugins/dropify/dropify.min.js' %}"></script>
+<script src="{% static 'dashboard/plugins/flatpickr/flatpickr.js' %}"></script>
+<script src="{% static 'dashboard/assets/js/apps/invoice-add.js' %}"></script>
+<script src="{% static 'dashboard/assets/js/scrollspyNav.js' %}"></script>
+<script src="{% static 'dashboard/plugins/editors/markdown/simplemde.min.js' %}"></script>
+<script src="{% static 'dashboard/plugins/editors/markdown/custom-markdown.js' %}"></script>
+<script src="{% static 'dashboard/plugins/file-upload/file-upload-with-preview.min.js' %}"></script>
+    <script>
+        var firstUpload = new FileUploadWithPreview('myFirstImage',{
+            images: {
+                baseImage: '{% if object.header_logo.url is not None %}{{object.header_logo.url}}{% else %}{% static 'assets/img/plaseholder.png' %}{% endif %}',
+            }
+        });
+        var firstUpload = new FileUploadWithPreview('myScoundImage',{
+            images: {
+                baseImage: '{% if object.footer_logo.url is not None %}{{object.footer_logo.url}}{% else %}{% static 'assets/img/plaseholder.png' %}{% endif %}',
+            }
+        });
+        var firstUpload = new FileUploadWithPreview('myThImage',{
+            images: {
+                baseImage: '{% if object.slider_image.url is not None %}{{object.slider_image.url}}{% else %}{% static 'assets/img/plaseholder.png' %}{% endif %}',
+            }
+        });
+        
+    </script>
+<script>
+    new SimpleMDE({
+    element: document.getElementById('test'),
+    spellChecker: false,
+    forceSync: true,
+    });
+</script>
+{% endblock pageleveljs %}

@@ -11,6 +11,12 @@ COLOR_CHOICES = (
 class SiteConfiguration(SingletonModel):
     header_logo = models.ImageField(upload_to="images/logos/")
     footer_logo = models.ImageField(upload_to="images/logos/")
+    footer_about = models.CharField(max_length=1000)
+    address = models.CharField(max_length=1000, blank=True, null=True)
+    phone = models.CharField(max_length=12, blank=True, null=True)
+    email = models.CharField(max_length=250, blank=True, null=True)
+    facebook_page = models.URLField(blank=True, null=True)
+    youtube_channel = models.URLField(blank=True, null=True)
     # Slider Configuration
     slider_image = models.ImageField(upload_to="images/slider/")
     slider_title = models.CharField(max_length=250)

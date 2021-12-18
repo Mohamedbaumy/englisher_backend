@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load solo_tags %}
+{% load blog_tags %}
 
 
 {% block content %}
@@ -24,7 +25,7 @@
                     <div class="col-md-8 col-sm-7 p-4">
                         <div class="team-desc text-start">
                             <div class="team-title pt-0 mb-3"><h4>{{team.name}}</h4><span class="fst-normal">{% if team.jop %}{{team.jop}}{% endif %}</span></div>
-                            <p class="mb-3">{{team.about}}</p>
+                            <p class="mb-3">{{team.about|markdown}}</p>
                             <a href="#" class="social-icon inline-block si-small si-colored si-rounded si-facebook">
                                 <i class="icon-facebook"></i>
                                 <i class="icon-facebook"></i>

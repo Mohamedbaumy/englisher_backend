@@ -29,7 +29,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(),
         name='logout'),
     path('password/change/',
-        auth_views.PasswordChangeView.as_view(),
+        auth_views.PasswordChangeView.as_view(success_url=reverse_lazy('dashboard')),
         name='change-password'),
         # success_url=reverse_lazy('category-list')
     path('', include("englisher.urls")),
@@ -39,6 +39,7 @@ urlpatterns = [
     path('dashboard/', include("englisher.dashbord.sponsor.urls")),
     path('dashboard/', include("englisher.dashbord.foundrfeature.urls")),
     path('dashboard/', include("englisher.dashbord.team.urls")),
+    path('dashboard/', include("englisher.dashbord.solo.urls")),
     
 ]
 if settings.DEBUG:

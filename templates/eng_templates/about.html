@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load solo_tags %}
+{% load blog_tags %}
 
 
 {% block content %}
@@ -12,7 +13,7 @@
             <div class="heading-block">
                 <h1>Welcome to Englisher.<br>{{about_founder.founder_name}}</h1>
             </div>
-            <p class="lead">{{about_founder.body}}</p>
+            <p class="lead">{{about_founder.body|markdown}}</p>
         </div>
 
         <div class="col-lg-7 align-self-end">

@@ -29,7 +29,7 @@
                     </a>
                 </li>
                 <li class="nav-item theme-text">
-                    <a href="" class="nav-link">DIRECTEUR</a>
+                    <a href="" class="nav-link">ENGLISHER</a>
                 </li>
             </ul>
             <ul class="navbar-item flex-row ml-md-auto">
@@ -99,6 +99,26 @@
                             </div>
                         </a>
                     </li>
+                    {% if 'englisher.view_siteconfiguration' in perms %}
+                    <li class="menu">
+                        <a href="{% url 'site-edit' 1 %}" data-active="true"  aria-expanded="true" class="dropdown-toggle">
+                            <div class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <span>Site Setting</span>
+                            </div>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if 'englisher.view_aboutfounder' in perms %}
+                    <li class="menu">
+                        <a href="{% url 'about-edit' 1 %}" data-active="true"  aria-expanded="true" class="dropdown-toggle">
+                            <div class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <span>About Founder</span>
+                            </div>
+                        </a>
+                    </li>
+                    {% endif %}
                     {% if 'englisher.view_foundrfeature' in perms %}
                     <li class="menu">
                         <a href="{% url 'foundrfeature-list' %}" data-active="true"  aria-expanded="true" class="dropdown-toggle">
