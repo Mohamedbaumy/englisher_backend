@@ -38,6 +38,7 @@ urlpatterns = [
     path('dashboard/', include("englisher.dashbord.testimonials.urls")),
     path('dashboard/', include("englisher.dashbord.sponsor.urls")),
     path('dashboard/', include("englisher.dashbord.foundrfeature.urls")),
+    path('dashboard/', include("englisher.dashbord.englisherfeature.urls")),
     path('dashboard/', include("englisher.dashbord.team.urls")),
     path('dashboard/', include("englisher.dashbord.solo.urls")),
     

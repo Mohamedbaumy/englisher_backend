@@ -33,62 +33,11 @@
 
 {% block content %}
 {% get_solo 'englisher.SiteConfiguration' as site_config %}
-<div class="container clearfix mb-5 pb-5">
 
-    <h3 class="h1 fw-semibold mb-5 text-center">Pricing Table</h3>
-
-    <div class="row pricing block-pricing-10 justify-content-center align-items-stretch">
-
-        {% for price in prices %}
-        <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-            <div class="pricing-box d-flex flex-column justify-content-between align-items-center h-100 rounded-5 pricing-simple px-5 py-0 border border-{{price.box_color}} text-center overflow-visible">
-                <h3 class="pricing-title ls0 bg-white fw-normal">{{price.title}}</h3>
-                <div class="pricing-price fw-semibold font-secondary"><span class="price-unit">€</span>{{price.price}}<span class="price-tenure font-body">monthly</span></div>
-                <div class="pricing-features">
-                    <h5 class="mb-2 fw-semibold">Plans Included:</h5>
-                    <ul class="iconlist">
-                        {{price.plan_included|markdown}}
-                    </ul>
-                </div>
-                <a href="#" class="btn btn-action btn-outline-{{price.box_color}} bg-white h-bg-dark text-dark h-text-light h-border-transparent btn-lg px-4">Free Trail for 30 Days</a>
-            </div>
-        </div>
-        {% endfor %}
-
-    </div>
-
-</div>
-<div class="row clearfix align-items-stretch bottommargin-lg">
-
-    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #515875;">
-        <i class="i-plain i-xlarge mx-auto icon-user-graduate"></i>
-        <div class="counter counter-lined"><span data-from="100" data-to="{{site_config.student_number}}" data-refresh-interval="50" data-speed="2000"></span>K</div>
-        <h5>Student</h5>
-    </div>
-
-    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #576F9E;">
-        <i class="i-plain i-xlarge mx-auto icon-line-video"></i>
-        <div class="counter counter-lined"><span data-from="3000" data-to="{{site_config.free_video_number}}" data-refresh-interval="100" data-speed="2500"></span></div>
-        <h5>free Videos</h5>
-    </div>
-
-    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #6697B9;">
-        <i class="i-plain i-xlarge mx-auto icon-line2-layers"></i>
-        <div class="counter counter-lined"><span data-from="10" data-to="{{site_config.courses_number}}" data-refresh-interval="25" data-speed="3500"></span></div>
-        <h5>Cources</h5>
-    </div>
-
-    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #88C3D8;">
-        <i class="i-plain i-xlarge mx-auto icon-line2-clock"></i>
-        <div class="counter counter-lined"><span data-from="60" data-to="{{site_config.hours_number}}" data-refresh-interval="30" data-speed="2700"></span></div>
-        <h5>Hours of Studying</h5>
-    </div>
-
-</div>
 <div class="section topmargin mb-0 border-bottom-0 page-section" id="section-videos" data-onepage-settings="{'offset':0,'speed':'1250','easing':'easeInOutExpo'}">
     <div class="container clearfix">
         <div class="heading-block center m-0">
-            <h3>Our Free Videos</h3>
+            <h3>OUR FREE LESSONS</h3>
         </div>
     </div>
 </div>
@@ -118,9 +67,65 @@
 </div>
 <a href="https://www.facebook.com/watch/100912285078238/268112708212095" class="button button-full button-dark center text-end bottommargin-lg">
     <div class="container clearfix">
-        More than 100+ videos. <strong>See More</strong> <i class="icon-caret-right" style="top:4px;"></i>
+        More than 100+ plus videos. <strong>See More</strong> <i class="icon-caret-right" style="top:4px;"></i>
     </div>
 </a>
+
+<div class="row clearfix align-items-stretch bottommargin-lg">
+
+    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #515875;">
+        <i class="i-plain i-xlarge mx-auto icon-user-graduate"></i>
+        <div class="counter counter-lined"><span data-from="100" data-to="{{site_config.student_number}}" data-refresh-interval="50" data-speed="2000"></span>K</div>
+        <h5>Student</h5>
+    </div>
+
+    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #576F9E;">
+        <i class="i-plain i-xlarge mx-auto icon-line-video"></i>
+        <div class="counter counter-lined"><span data-from="3000" data-to="{{site_config.free_video_number}}" data-refresh-interval="100" data-speed="2500"></span></div>
+        <h5>free Videos</h5>
+    </div>
+
+    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #6697B9;">
+        <i class="i-plain i-xlarge mx-auto icon-line2-layers"></i>
+        <div class="counter counter-lined"><span data-from="10" data-to="{{site_config.courses_number}}" data-refresh-interval="25" data-speed="3500"></span></div>
+        <h5>Courses</h5>
+    </div>
+
+    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #88C3D8;">
+        <i class="i-plain i-xlarge mx-auto icon-line2-clock"></i>
+        <div class="counter counter-lined"><span data-from="60" data-to="{{site_config.hours_number}}" data-refresh-interval="30" data-speed="2700"></span></div>
+        <h5>Hours of Studying</h5>
+    </div>
+
+</div>
+
+<div class="container clearfix mb-5 pb-5">
+
+    <h3 class="h1 fw-semibold mb-5 text-center">Pricing Table</h3>
+
+    <div class="row pricing block-pricing-10 justify-content-center align-items-stretch">
+
+        {% for price in prices %}
+        <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+            <div class="pricing-box d-flex flex-column justify-content-between align-items-center h-100 rounded-5 pricing-simple px-5 py-0 border border-{{price.box_color}} text-center overflow-visible">
+                <h3 class="pricing-title ls0 bg-white fw-normal">{{price.title}}</h3>
+                <div class="pricing-price fw-semibold font-secondary"><span class="price-unit">€</span>{{price.price}}<span class="price-tenure font-body">monthly</span></div>
+                <div class="pricing-features">
+                    <h5 class="mb-2 fw-semibold">Plans Included:</h5>
+                    <ul class="iconlist">
+                        {{price.plan_included|markdown}}
+                    </ul>
+                </div>
+                <a href="#" class="btn btn-action btn-outline-{{price.box_color}} bg-white h-bg-dark text-dark h-text-light h-border-transparent btn-lg px-4">Free Trail for 30 Days</a>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
 {% include "testimonials.html" %}
 {% include "sponsors.html" %}
 {% endblock content %}

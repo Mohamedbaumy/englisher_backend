@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import (SiteUpdateView, AboutUpdateView)
+from .views import (SiteUpdateView, AboutUpdateView, AboutEnglisherUpdateView)
 
 
 urlpatterns = [
@@ -9,4 +9,7 @@ urlpatterns = [
      path("about/edit/<pk>/",
           AboutUpdateView.as_view(),
           name="about-edit"),
+     path("about_englisher/edit/<pk>/",
+          AboutEnglisherUpdateView.as_view(),
+          name="about-englisher-edit"),
 ]

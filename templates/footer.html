@@ -8,94 +8,42 @@
         ============================================= -->
         <div class="footer-widgets-wrap">
 
-            <div class="row col-mb-50">
-                <div class="col-lg-8">
+            <div class="row col-mb-50 text-center justify-content-center">
 
-                    <div class="row col-mb-50">
-                        <div class="col-md-6">
-
-                            <div class="widget clearfix">
-
-                                <img src="{{site_config.footer_logo.url}}" alt="Image" class="footer-logo">
-
-                                <p>{{site_config.footer_about}}</p>
-
-                                <div style="background: url('{% static 'images/world-map.png'%}') no-repeat center center; background-size: 100%;">
-                                    <address>
-                                        {{site_config.address}}
-                                    </address>
-                                    <abbr title="Phone Number"><strong>Phone:</strong></abbr> {{site_config.phone}}<br>
-                                    <abbr title="Email Address"><strong>Email:</strong></abbr> {{site_config.email}}
-                                </div>
-
+                <div class="col-lg-6">
+                    <div class="widget subscribe-widget clearfix">
+                        <img src="{{site_config.footer_logo.url}}" alt="Image" class="footer-logo">
+                        <h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
+                        <div class="widget-subscribe-form-result"></div>
+                        <form id="widget-subscribe-form" action="http://themes.semicolonweb.com/html/canvas/include/subscribe.php" method="post" class="mb-0">
+                            <div class="input-group mx-auto">
+                                <div class="input-group-text"><i class="icon-email2"></i></div>
+                                <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your Email">
+                                <button class="btn btn-success" type="submit">Subscribe</button>
                             </div>
-
-                        </div>
-
-                        <div class="col-md-6">
-
-                            <div class="widget widget_links clearfix">
-
-                                <h4>Englisher</h4>
-
-                                <ul>
-                                    <li><a href="{% url 'home' %}">Home</a></li>
-                                    <li><a href="{% url 'about_founder' %}">About</a></li>
-                                    <li><a href="{% url 'team' %}">Team</a></li>
-                                    <li><a href="{% url 'home' %}#">Free Video</a></li>
-                                    <li><a href="{% url 'home' %}#">Contact US</a></li>
-                                </ul>
-
-                            </div>
-
-                        </div>
+                        </form>
                     </div>
+                    <div class="d-flex justify-content-center justify-content-md-center mt-5">
+                        <a href="#" class="social-icon si-small si-borderless si-facebook">
+                            <i class="icon-facebook"></i>
+                            <i class="icon-facebook"></i>
+                        </a>
 
-                </div>
+                        <a href="#" class="social-icon si-small si-borderless si-twitter">
+                            <i class="icon-twitter"></i>
+                            <i class="icon-twitter"></i>
+                        </a>
 
-                <div class="col-lg-4">
+                        <a href="#" class="social-icon si-small si-borderless si-youtube">
+                            <i class="icon-youtube"></i>
+                            <i class="icon-youtube"></i>
+                        </a>
 
-                    <div class="row col-mb-50">
-
-                        <div class="col-md-5 col-lg-12">
-                            <div class="widget subscribe-widget clearfix">
-                                <h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
-                                <div class="widget-subscribe-form-result"></div>
-                                <form id="widget-subscribe-form" action="http://themes.semicolonweb.com/html/canvas/include/subscribe.php" method="post" class="mb-0">
-                                    <div class="input-group mx-auto">
-                                        <div class="input-group-text"><i class="icon-email2"></i></div>
-                                        <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your Email">
-                                        <button class="btn btn-success" type="submit">Subscribe</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-lg-12">
-                            <div class="widget clearfix" style="margin-bottom: -20px;">
-
-                                <div class="row">
-                                    <div class="col-6 col-md-12 col-lg-6 clearfix bottommargin-sm">
-                                        <a href="{{site_config.facebook_page}}" class="social-icon si-dark si-colored si-facebook mb-0" style="margin-right: 10px;">
-                                            <i class="icon-facebook"></i>
-                                            <i class="icon-facebook"></i>
-                                        </a>
-                                        <a href="{{site_config.facebook_page}}"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
-                                    </div>
-                                    <div class="col-6 col-md-12 col-lg-6 clearfix">
-                                        <a href="{{site_config.youtube_channel}}" class="social-icon si-dark si-colored si-youtube mb-0" style="margin-right: 10px;">
-                                            <i class="icon-youtube"></i>
-                                            <i class="icon-youtube"></i>
-                                        </a>
-                                        <a href="{{site_config.youtube_channel}}"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
+                        <a href="#" class="social-icon si-small si-borderless si-linkedin">
+                            <i class="icon-linkedin"></i>
+                            <i class="icon-linkedin"></i>
+                        </a>
                     </div>
-
                 </div>
             </div>
 
@@ -105,15 +53,10 @@
 
     <!-- Copyrights
     ============================================= -->
-    <div id="copyrights">
+    <!-- <div id="copyrights">
         <div class="container">
 
             <div class="row col-mb-30">
-
-                <div class="col-md-6 text-center text-md-start">
-                    Copyrights &copy; 2020 All Rights Reserved by Canvas Inc.<br>
-                    <div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
-                </div>
 
                 <div class="col-md-6 text-center text-md-end">
                     <div class="d-flex justify-content-center justify-content-md-end">
@@ -137,14 +80,11 @@
                             <i class="icon-linkedin"></i>
                         </a>
                     </div>
-
-                    <div class="clear"></div>
-
-                    <i class="icon-envelope2"></i> info@canvas.com 
                 </div>
 
             </div>
 
         </div>
-    </div><!-- #copyrights end -->
+    </div> -->
+    <!-- #copyrights end -->
 </footer>

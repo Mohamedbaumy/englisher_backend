@@ -9,8 +9,7 @@
                 <!-- Logo
                 ============================================= -->
                 <div id="logo">
-                    <a href="{% url 'home' %}" class="standard-logo" data-dark-logo="{{site_config.header_logo.url}}"><img src="{{site_config.header_logo.url}}" alt="Englisher Logo"></a>
-                    <a href="{% url 'home' %}" class="retina-logo" data-dark-logo="{{site_config.header_logo.url}}"><img src="{{site_config.header_logo.url}}" alt="Englisher Logo"></a>
+                    <a href="{% url 'home' %}" class="standard-logo" data-dark-logo="{{site_config.header_logo.url}}">Speak With Confidence!</a>
                 </div><!-- #logo end -->
 
                 
@@ -32,6 +31,9 @@
                             <ul class="sub-menu-container">
                                 <li class="menu-item">
                                     <a class="menu-link" href="{% url 'about_founder' %}"><div>Know The Founder</div></a>
+                                </li>
+                                <li class="menu-item">
+                                    <a class="menu-link" href="{% url 'about_englisher' %}"><div>Know The Englisher</div></a>
                                 </li>
                                 <li class="menu-item">
                                     <a class="menu-link" href="{% url 'team' %}"><div>Our Team</div></a>

@@ -9,7 +9,7 @@ COLOR_CHOICES = (
 )
 
 class SiteConfiguration(SingletonModel):
-    header_logo = models.ImageField(upload_to="images/logos/")
+    # header_logo = models.ImageField(upload_to="images/logos/")
     footer_logo = models.ImageField(upload_to="images/logos/")
     footer_about = models.CharField(max_length=1000)
     address = models.CharField(max_length=1000, blank=True, null=True)
@@ -19,7 +19,7 @@ class SiteConfiguration(SingletonModel):
     youtube_channel = models.URLField(blank=True, null=True)
     # Slider Configuration
     slider_image = models.ImageField(upload_to="images/slider/")
-    slider_title = models.CharField(max_length=250)
+    slider_title = models.CharField(max_length=250, blank=True, null=True)
     slider_body = models.CharField(max_length=1000, blank=True, null=True)
     #  Numers Configuration
     student_number = models.IntegerField(default=500)
@@ -96,6 +96,30 @@ class AboutFounder(SingletonModel):
 
 
 class FoundrFeature(models.Model):
+    icon = models.CharField(max_length=100)
+    value = models.CharField(max_length=250)
+    body = models.TextField()
+    active = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.value
+
+
+class AboutEnglisher(SingletonModel):
+    englisher_name = models.CharField(max_length=250)
+    englisher_image = models.ImageField(upload_to="images/englisher/")
+    body = models.TextField()
+
+    def __str__(self):
+        return "About Englisher"
+
+    class Meta:
+        verbose_name = "About Englisher"
+
+
+class EnglisherFeature(models.Model):
     icon = models.CharField(max_length=100)
     value = models.CharField(max_length=250)
     body = models.TextField()
