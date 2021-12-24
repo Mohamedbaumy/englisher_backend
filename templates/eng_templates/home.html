@@ -13,7 +13,9 @@
                 <div class="swiper-slide dark">
                     <div class="container">
                         <div class="slider-caption slider-caption-left">
+                            {% if site_config.slider_title %}
                             <h2 data-animate="fadeInUp">{{site_config.slider_title}}</h2>
+                            {% endif %}
                             {% if site_config.slider_body %}
                             <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">{{site_config.slider_body}}</p>
                             {% endif %}
