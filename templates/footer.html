@@ -12,7 +12,6 @@
 
                 <div class="col-lg-6">
                     <div class="widget subscribe-widget clearfix">
-                        <img src="{{site_config.footer_logo.url}}" alt="Image" class="footer-logo">
                         <h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
                         <div class="widget-subscribe-form-result"></div>
                         <form id="widget-subscribe-form" action="http://themes.semicolonweb.com/html/canvas/include/subscribe.php" method="post" class="mb-0">
@@ -23,25 +22,37 @@
                             </div>
                         </form>
                     </div>
+                    <style>
+                        .footer-logo.footer{
+                            border-radius: 10px;
+                            margin-top: 57px;
+                        }
+                    </style>
+                    <img src="{% static 'images/footer.jpg' %}" alt="Image" height="100" width="100" class="footer-logo footer">
                     <div class="d-flex justify-content-center justify-content-md-center mt-5">
-                        <a href="#" class="social-icon si-small si-borderless si-facebook">
+                        <a href="https://www.facebook.com/Englisher87/" target="_blank" class="social-icon si-small si-borderless si-facebook">
                             <i class="icon-facebook"></i>
                             <i class="icon-facebook"></i>
                         </a>
 
-                        <a href="#" class="social-icon si-small si-borderless si-twitter">
-                            <i class="icon-twitter"></i>
-                            <i class="icon-twitter"></i>
+                        <a href="#" target="_blank" class="social-icon si-small si-borderless si-instagram">
+                            <i class="icon-instagram"></i>
+                            <i class="icon-instagram"></i>
                         </a>
 
-                        <a href="#" class="social-icon si-small si-borderless si-youtube">
+                        <a href="https://youtube.com/c/TheEnglisher" target="_blank" class="social-icon si-small si-borderless si-youtube">
                             <i class="icon-youtube"></i>
                             <i class="icon-youtube"></i>
                         </a>
 
-                        <a href="#" class="social-icon si-small si-borderless si-linkedin">
+                        <a href="https://www.linkedin.com/company/englisher/" target="_blank" class="social-icon si-small si-borderless si-linkedin">
                             <i class="icon-linkedin"></i>
                             <i class="icon-linkedin"></i>
+                        </a>
+
+                        <a href="https://www.instagram.com/englisherofficial/" target="_blank" class="social-icon si-small si-borderless si-whatsapp">
+                            <i class="icon-whatsapp"></i>
+                            <i class="icon-whatsapp"></i>
                         </a>
                     </div>
                 </div>

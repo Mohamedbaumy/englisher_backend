@@ -103,7 +103,7 @@
 
 <div class="container clearfix mb-5 pb-5">
 
-    <h3 class="h1 fw-semibold mb-5 text-center">Pricing Table</h3>
+    <h3 class="h1 fw-semibold mb-5 text-center">Our Courses</h3>
 
     <div class="row pricing block-pricing-10 justify-content-center align-items-stretch">
 
@@ -111,14 +111,12 @@
         <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
             <div class="pricing-box d-flex flex-column justify-content-between align-items-center h-100 rounded-5 pricing-simple px-5 py-0 border border-{{price.box_color}} text-center overflow-visible">
                 <h3 class="pricing-title ls0 bg-white fw-normal">{{price.title}}</h3>
-                <div class="pricing-price fw-semibold font-secondary"><span class="price-unit">€</span>{{price.price}}<span class="price-tenure font-body">monthly</span></div>
                 <div class="pricing-features">
-                    <h5 class="mb-2 fw-semibold">Plans Included:</h5>
                     <ul class="iconlist">
                         {{price.plan_included|markdown}}
                     </ul>
                 </div>
-                <a href="#" class="btn btn-action btn-outline-{{price.box_color}} bg-white h-bg-dark text-dark h-text-light h-border-transparent btn-lg px-4">Free Trail for 30 Days</a>
+                <a href="#" class="btn btn-action btn-outline-{{price.box_color}} bg-white h-bg-dark text-dark h-text-light h-border-transparent btn-lg px-4">For Booking</a>
             </div>
         </div>
         {% endfor %}

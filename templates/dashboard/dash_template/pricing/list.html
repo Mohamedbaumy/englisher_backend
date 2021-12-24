@@ -23,7 +23,7 @@
                     <tr>
                         <th class="checkbox-column" style="width: 10px;"> # </th>
                         <th>Title</th>
-                        <th>Price</th>
+                        {% comment %} <th>Price</th> {% endcomment %}
                         <th>Box Color</th> 
                         <th>Active</th>
                         <th class="text-center">Actions</th>
@@ -38,7 +38,7 @@
                                 <p class="align-self-center mb-0 user-name">{{pricing}}</p>
                             </div>
                         </td>
-                        <td>{{pricing.price}}</td>
+                        {% comment %} <td>{{pricing.price}}</td> {% endcomment %}
                         <td>{{pricing.get_box_color_display}}</td>
                         <td>{{pricing.active}}</td>
                         <td class="text-center">

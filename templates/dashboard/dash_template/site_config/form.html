@@ -57,7 +57,7 @@
                                                         <span class="text-success">{{ error }}</span>
                                                     {% endfor %}
                                                 </div> {% endcomment %}
-                                                <div class="custom-file-container row" data-upload-id="myScoundImage">
+                                                {% comment %} <div class="custom-file-container row" data-upload-id="myScoundImage">
                                                     <label>{{ form.footer_logo.label }}
                                                         <a href="javascript:void(0)" class=" custom-file-container__image-clear" title="Clear Image">x</a>
                                                     </label>
@@ -90,8 +90,8 @@
                                                     {% for error in form.address.errors %}
                                                         <span class="text-danger">{{ error }}</span>
                                                     {% endfor %}
-                                                </div>
-                                                <div class="form-group row pt-3">
+                                                </div> {% endcomment %}
+                                                {% comment %} <div class="form-group row pt-3">
                                                     <label for="{{ form.phone.id_for_label }}" class="col-sm-3 col-form-label col-form-label-sm">{{ form.phone.label }}</label>
                                                     <div class="col-sm-9">
                                                         {{ form.phone|add_class:'form-control form-control-sm' }}
@@ -117,8 +117,8 @@
                                                     {% for error in form.facebook_page.errors %}
                                                         <span class="text-danger">{{ error }}</span>
                                                     {% endfor %}
-                                                </div>
-                                                <div class="form-group row pt-3">
+                                                </div> {% endcomment %}
+                                                {% comment %} <div class="form-group row pt-3">
                                                     <label for="{{ form.youtube_channel.id_for_label }}" class="col-sm-3 col-form-label col-form-label-sm">{{ form.youtube_channel.label }}</label>
                                                     <div class="col-sm-9">
                                                         {{ form.youtube_channel|add_class:'form-control form-control-sm' }}
@@ -126,7 +126,7 @@
                                                     {% for error in form.youtube_channel.errors %}
                                                         <span class="text-danger">{{ error }}</span>
                                                     {% endfor %}
-                                                </div>
+                                                </div> {% endcomment %}
                                                 <div class="custom-file-container row" data-upload-id="myThImage">
                                                     <label>{{ form.slider_image.label }}
                                                         <a href="javascript:void(0)" class=" custom-file-container__image-clear" title="Clear Image">x</a>

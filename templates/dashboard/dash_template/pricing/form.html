@@ -50,7 +50,7 @@
                                                         <span class="text-danger">{{ error }}</span>
                                                     {% endfor %}
                                                 </div>
-                                                <div class="form-group row pt-3">
+                                                {% comment %} <div class="form-group row pt-3">
                                                     <label for="{{ form.price.id_for_label }}" class="col-sm-3 col-form-label col-form-label-sm">{{ form.price.label }}</label>
                                                     <div class="col-sm-9">
                                                         {{ form.price|add_class:'form-control form-control-sm' }}
@@ -58,7 +58,7 @@
                                                     {% for error in form.price.errors %}
                                                         <span class="text-danger">{{ error }}</span>
                                                     {% endfor %}
-                                                </div>
+                                                </div> {% endcomment %}
                                                 <div class="form-group row pt-3">
                                                     <label for="{{ form.active.id_for_label }}" class="col-sm-3 col-form-label col-form-label-sm">{{ form.active.label }}</label>
                                                     <div class="col-sm-9">
