@@ -139,3 +139,10 @@ LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'login'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
+
+EMAIL_HOST = 'mail.privateemail.com'
+EMAIL_HOST_USER = 'mahmoud.elneshawy@english-er.com'
+EMAIL_HOST_PASSWORD = 'Mm12345678'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

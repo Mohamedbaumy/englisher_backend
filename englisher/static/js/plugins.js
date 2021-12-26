@@ -3214,11 +3214,12 @@ window.SEMICOLON_subscribeFormInit = function( $subscribeForm ){
 			elResult = element.find('.widget-subscribe-form-result'),
 			elRedirect = element.attr('data-redirect'),
 			defButton, defButtonText, alertType;
+		console.log($(this))
 
 		element.find('form').validate({
 			submitHandler: function(form) {
 
-				elResult.hide();
+				// elResult.hide();
 
 				if( elLoader == 'button' ) {
 					defButton = $(form).find('button');
@@ -3239,22 +3240,8 @@ window.SEMICOLON_subscribeFormInit = function( $subscribeForm ){
 						} else {
 							$(form).find('.icon-line-loader').removeClass('icon-line-loader icon-spin').addClass('icon-email2');
 						}
-						if( data.alert != 'error' && elRedirect ){
-							window.location.replace( elRedirect );
-							return true;
-						}
-						if( elAlert == 'inline' ) {
-							if( data.alert == 'error' ) {
-								alertType = 'alert-danger';
-							} else {
-								alertType = 'alert-success';
-							}
-
-							elResult.addClass( 'alert ' + alertType ).html( data.message ).slideDown( 400 );
-						} else {
-							elResult.attr( 'data-notify-type', data.alert ).attr( 'data-notify-msg', data.message ).html('');
-							SEMICOLON.widget.notifications({ el: elResult });
-						}
+						elResult.addClass( 'text-success alert h4' ).html( data.message ).slideDown( 400 );
+						
 					}
 				});
 			}

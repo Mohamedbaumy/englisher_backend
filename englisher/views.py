@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from .models import Pricing, FreeVideo, Testimonials, Sponsor, FoundrFeature, Team, EnglisherFeature
 from django.contrib.auth.decorators import login_required
+from .forms import EmailForm
+from django.core.mail import send_mail
+from django.http import JsonResponse
+
 
 def home(request):
     prices = Pricing.objects.filter(active=True)[:3]
@@ -52,3 +56,16 @@ def team(request):
 def dashboard(request):
     trmplate_name = "dashboard/base.html"
     return render(request, trmplate_name, {})
+
+
+def add_email(request):
+    data = {'success': False}
+    if request.method=='POST':
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            form.save()
+            data['success'] = True
+        # send_mail("New Mail", "lol", "mahmoud.elneshawy@english-er.com",
+        #          ["nn0114250@gmail.com", ])
+    data['message'] = "Thank you for Subscribe!"
+    return JsonResponse(data)

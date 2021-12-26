@@ -1,5 +1,7 @@
 {% load static %}
 {% load solo_tags %}
+{% load widget_tweaks %}
+
 {% get_solo 'englisher.SiteConfiguration' as site_config %}
 <footer id="footer" class="dark">
     <div class="container">
@@ -14,28 +16,26 @@
                     <div class="widget subscribe-widget clearfix">
                         <h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
                         <div class="widget-subscribe-form-result"></div>
-                        <form id="widget-subscribe-form" action="http://themes.semicolonweb.com/html/canvas/include/subscribe.php" method="post" class="mb-0">
+                        <form id="widget-subscribe-form" action="{% url 'test-url' %}" method="post" class="mb-0">
+                            {% csrf_token %}
                             <div class="input-group mx-auto">
                                 <div class="input-group-text"><i class="icon-email2"></i></div>
-                                <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your Email">
-                                <button class="btn btn-success" type="submit">Subscribe</button>
+                                <input type="email" maxlength="250" required id="id_email widget-subscribe-form-email" name="email" class="form-control required email" placeholder="Enter your Email">
+                                <button type="submit" class="btn btn-danger">Subscribe</button>
                             </div>
                         </form>
                     </div>
-                    <style>
-                        .footer-logo.footer{
-                            border-radius: 10px;
-                            margin-top: 57px;
-                        }
-                    </style>
-                    <img src="{% static 'images/footer.jpg' %}" alt="Image" height="100" width="100" class="footer-logo footer">
+                    <div class="logo-name">
+                        <img src="{% static 'images/footer.jpg' %}" alt="Image" height="100" width="100" class="footer-img">
+                        <span>Englisher</span>
+                    </div>
                     <div class="d-flex justify-content-center justify-content-md-center mt-5">
                         <a href="https://www.facebook.com/Englisher87/" target="_blank" class="social-icon si-small si-borderless si-facebook">
                             <i class="icon-facebook"></i>
                             <i class="icon-facebook"></i>
                         </a>
 
-                        <a href="#" target="_blank" class="social-icon si-small si-borderless si-instagram">
+                        <a href="https://wa.me/message/JUUVMHPSUP7MC1" target="_blank" class="social-icon si-small si-borderless si-instagram">
                             <i class="icon-instagram"></i>
                             <i class="icon-instagram"></i>
                         </a>

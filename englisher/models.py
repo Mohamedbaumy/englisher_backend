@@ -136,13 +136,23 @@ class Team(models.Model):
     image = models.ImageField(upload_to="images/team/")
     jop = models.CharField(max_length=250, blank=True, null=True)
     about = models.TextField()
-    facebook_link = models.URLField(blank=True, null=True)
-    twitter_link = models.URLField(blank=True, null=True)
-    linkedin_link = models.URLField(blank=True, null=True)
+    # facebook_link = models.URLField(blank=True, null=True)
+    # twitter_link = models.URLField(blank=True, null=True)
+    # linkedin_link = models.URLField(blank=True, null=True)
     active = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
+
+
+class Email(models.Model):
+    email = models.EmailField(max_length=250, unique=True)
+    active = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.email
 

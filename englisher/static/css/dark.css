@@ -225,7 +225,7 @@ body #side-panel.dark {
 
 .dark .menu-item:hover > .menu-link,
 .dark .menu-item.current > .menu-link {
-	color: #1ABC9C;
+	color: red;
 }
 
 @media (max-width: 991.98px) {

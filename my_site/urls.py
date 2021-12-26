@@ -41,6 +41,7 @@ urlpatterns = [
     path('dashboard/', include("englisher.dashbord.englisherfeature.urls")),
     path('dashboard/', include("englisher.dashbord.team.urls")),
     path('dashboard/', include("englisher.dashbord.solo.urls")),
+    path('dashboard/', include("englisher.dashbord.email.urls")),
     
 ]
 if settings.DEBUG:

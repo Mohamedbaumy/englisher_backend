@@ -26,7 +26,7 @@
                         <div class="team-desc text-start">
                             <div class="team-title pt-0 mb-3"><h4>{{team.name}}</h4><span class="fst-normal">{% if team.jop %}{{team.jop}}{% endif %}</span></div>
                             <p class="mb-3">{{team.about|markdown}}</p>
-                            <a href="#" class="social-icon inline-block si-small si-colored si-rounded si-facebook">
+                            {% comment %} <a href="#" class="social-icon inline-block si-small si-colored si-rounded si-facebook">
                                 <i class="icon-facebook"></i>
                                 <i class="icon-facebook"></i>
                             </a>
@@ -37,7 +37,7 @@
                             <a href="#" class="social-icon inline-block si-small si-colored si-rounded si-gplus">
                                 <i class="icon-gplus"></i>
                                 <i class="icon-gplus"></i>
-                            </a>
+                            </a> {% endcomment %}
                         </div>
                     </div>
                 </div>
