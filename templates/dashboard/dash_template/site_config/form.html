@@ -239,11 +239,11 @@
                 baseImage: '{% if object.header_logo.url is not None %}{{object.header_logo.url}}{% else %}{% static 'assets/img/plaseholder.png' %}{% endif %}',
             }
         }); {% endcomment %}
-        var firstUpload = new FileUploadWithPreview('myScoundImage',{
+        {% comment %} var firstUpload = new FileUploadWithPreview('myScoundImage',{
             images: {
                 baseImage: '{% if object.footer_logo.url is not None %}{{object.footer_logo.url}}{% else %}{% static 'assets/img/plaseholder.png' %}{% endif %}',
             }
-        });
+        }); {% endcomment %}
         var firstUpload = new FileUploadWithPreview('myThImage',{
             images: {
                 baseImage: '{% if object.slider_image.url is not None %}{{object.slider_image.url}}{% else %}{% static 'assets/img/plaseholder.png' %}{% endif %}',
