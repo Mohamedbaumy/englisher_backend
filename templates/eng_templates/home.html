@@ -51,7 +51,7 @@
         <div class="grid-inner">
             <div class="portfolio-image">
                 <a href="#">
-                    <img src="{% static 'images/portfolio/4/3.jpg' %}" alt="Mac Sunglasses">
+                    <img src="{{video.image.url}}" alt="{{video.title}}">
                 </a>
                 <div class="bg-overlay">
                     <div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item">
@@ -75,25 +75,25 @@
 
 <div class="row clearfix align-items-stretch bottommargin-lg">
 
-    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #8b0000;">
+    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #EB1410;">
         <i class="i-plain i-xlarge mx-auto icon-user-graduate"></i>
         <div class="counter counter-lined"><span data-from="100" data-to="{{site_config.student_number}}" data-refresh-interval="50" data-speed="2000"></span>K</div>
         <h5>Student</h5>
     </div>
 
-    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #b22222;">
+    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #D41804;">
         <i class="i-plain i-xlarge mx-auto icon-line-video"></i>
         <div class="counter counter-lined">+<span data-from="0" data-to="{{site_config.free_video_number}}" data-refresh-interval="100" data-speed="2500"></span></div>
         <h5>free LESSONS</h5>
     </div>
 
-    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #dc143c;">
+    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #EB1410;">
         <i class="i-plain i-xlarge mx-auto icon-line2-layers"></i>
         <div class="counter counter-lined"><span data-from="10" data-to="{{site_config.courses_number}}" data-refresh-interval="25" data-speed="3500"></span></div>
         <h5>Courses</h5>
     </div>
 
-    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #ff0000;">
+    <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #D41804;">
         <i class="i-plain i-xlarge mx-auto icon-line2-clock"></i>
         <div class="counter counter-lined"><span data-from="60" data-to="{{site_config.hours_number}}" data-refresh-interval="30" data-speed="2700"></span></div>
         <h5>Hours of Studying</h5>
@@ -116,7 +116,7 @@
                         {{price.plan_included|markdown}}
                     </ul>
                 </div>
-                <a href="#" class="btn btn-action btn-outline-{{price.box_color}} bg-white h-bg-dark text-dark h-text-light h-border-transparent btn-lg px-4">For Booking <i class="icon-whatsapp"></i></a>
+                <a href="{{price.payment_url}}" class="btn btn-action btn-outline-{{price.box_color}} bg-white h-bg-success text-dark h-text-light h-border-transparent btn-lg px-4">For Booking <i class="icon-whatsapp"></i></a>
             </div>
         </div>
         {% endfor %}

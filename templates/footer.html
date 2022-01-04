@@ -14,7 +14,7 @@
 
                 <div class="col-lg-6">
                     <div class="widget subscribe-widget clearfix">
-                        <h5><strong>Subscribe</strong> to Our Newsletter to get Important News, <br> Amazing Offers &amp; Inside Scoops:</h5>
+                        <h5><strong>Subscribe</strong> to our Newsletter to get Important News <br>& Amazing Offers</h5>
                         <div class="widget-subscribe-form-result"></div>
                         <form id="widget-subscribe-form" action="{% url 'test-url' %}" method="post" class="mb-0">
                             {% csrf_token %}
@@ -55,47 +55,29 @@
                             <i class="icon-whatsapp"></i>
                         </a>
                     </div>
+                    <style>
+                        .color-pink{
+                            color: #de3e69 !important;
+                        }
+                        [class*=col-mb-]>.col, [class*=col-mb-]>[class*=col-] {
+                            padding-bottom: 0;
+                        }
+                        #footer .footer-widgets-wrap {
+                            position: relative;
+                            padding: 80px 0 0 0;
+                        }
+                        .copy-right{
+                            font-size: 10px;
+                        }
+                    </style>
+                        <div class="mt-5 copy-right">
+                            Copyrights &copy; 2022 All Rights Reserved by Englisher.<br>
+                            <p class="">Developed by <a href="https://www.facebook.com/apppump404/" target="_blank" class="color-pink"> App Pump</a></p>
+                        </div>
                 </div>
             </div>
 
         </div><!-- .footer-widgets-wrap end -->
 
     </div>
-
-    <!-- Copyrights
-    ============================================= -->
-    <!-- <div id="copyrights">
-        <div class="container">
-
-            <div class="row col-mb-30">
-
-                <div class="col-md-6 text-center text-md-end">
-                    <div class="d-flex justify-content-center justify-content-md-end">
-                        <a href="#" class="social-icon si-small si-borderless si-facebook">
-                            <i class="icon-facebook"></i>
-                            <i class="icon-facebook"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-small si-borderless si-twitter">
-                            <i class="icon-twitter"></i>
-                            <i class="icon-twitter"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-small si-borderless si-youtube">
-                            <i class="icon-youtube"></i>
-                            <i class="icon-youtube"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-small si-borderless si-linkedin">
-                            <i class="icon-linkedin"></i>
-                            <i class="icon-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </div> -->
-    <!-- #copyrights end -->
 </footer>

@@ -1,0 +1,215 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}MailBox{% endblock title %}
+{% block pagelevelcss %}
+<link rel="stylesheet" type="text/css" href="{% static 'dashboard/plugins/editors/quill/quill.snow.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'dashboard/assets/css/forms/theme-checkbox-radio.css' %}">
+<link href="{% static 'dashboard/assets/css/apps/mailbox.css' %}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="{% static 'dashboard/plugins/editors/markdown/simplemde.min.css' %}">
+<script src="{% static 'dashboard/plugins/sweetalerts/promise-polyfill.js' %}"></script>
+<link href="{% static 'dashboard/plugins/sweetalerts/sweetalert2.min.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'dashboard/plugins/sweetalerts/sweetalert.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'dashboard/plugins/notification/snackbar/snackbar.min.css' %}" rel="stylesheet" type="text/css" />
+{% endblock pagelevelcss %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item active" aria-current="page"><span>MailBox</span></li>
+{% endblock breadcrumb %}
+
+{% block content %}
+<div class="row layout-top-spacing">
+    <div class="col-xl-12 col-lg-12 col-md-12">
+        <div class="row">
+            <div class="col-xl-12  col-md-12">
+                <div class="mail-box-container">
+                    <div class="mail-overlay"></div>
+                    <div class="tab-title">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-12 text-center mail-btn-container">
+                                <a id="btn-compose-mail" class="btn btn-block" href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></a>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-12 mail-categories-container">
+
+                                <div class="mail-sidebar-scroll">
+
+                                    <ul class="nav nav-pills d-block" id="pills-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link list-actions" id="sentmail"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> <span class="nav-names"> Sent Mails</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="mailbox-inbox" class="accordion mailbox-inbox">
+
+                        <div class="search">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu mail-menu d-lg-none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                            <input type="text" class="form-control input-search" placeholder="Search Here...">
+                        </div>
+
+                        <div class="action-center">
+                            <div class="">
+                                <div class="n-chk">
+                                    <label class="new-control new-checkbox checkbox-primary">
+                                      <input type="checkbox" class="new-control-input" id="inboxAll">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="message-box">                            
+                            <div class="message-box-scroll" id="ct">
+                                {% for mail in object_list %}
+                                <div class="mail-item sentmail">
+                                    <div class="animated animatedFadeInUp fadeInUp" id="mailHeadingTwo">
+                                        <div class="mb-0">
+                                            <div class="mail-item-heading work collapsed"  data-toggle="collapse" role="navigation" data-target="#mailCollapse-{{mail.id}}" aria-expanded="false">
+                                                <div class="mail-item-inner">
+
+                                                    <div class="d-flex">
+                                                        <div class="n-chk text-center">
+                                                            <label class="new-control new-checkbox checkbox-primary">
+                                                              <span class="new-control-indicator"></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="f-body">
+                                                            <div class="meta-title-tag">
+                                                                <p class="mail-content-excerpt"><span class="mail-title" data-mailTitle="Mozilla Update">{{mail.subject}} - </span>{{mail.body}}</p>
+                                                                <p class="meta-time align-self-center">{{mail.created|date:"d n"}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="content-box">
+                            <div class="d-flex msg-close">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left close-message"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                                <h2 class="mail-title" data-selectedMailTitle=""></h2>
+                            </div>
+                            
+                            {% for mail in object_list %}
+                            <div id="mailCollapse-{{mail.id}}" class="collapse" aria-labelledby="mailHeadingFive" data-parent="#mailbox-inbox">
+                                <div class="mail-content-container mailInbox" data-mailfrom="info@mail.com" data-mailto="kingAndy@mail.com" data-mailcc="">
+
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <div class="d-flex user-info">
+                                            <div class="f-body">
+                                                <div class="meta-title-tag">
+                                                    <h4 class="mail-usr-name" data-mailtitle="Hosting Payment Reminder">{{mail.name}}</h4>
+                                                </div>
+                                                <div class="meta-mail-time">
+                                                    <p class="user-email" data-mailto="kingAndy@mail.com">{{mail.email_from}}</p>
+                                                    <p class="mail-content-meta-date current-recent-mail">{{mail.created|date:"d/n/Y"}} -</p>
+                                                    <p class="meta-time align-self-center">{{mail.created|date:"g:i A"}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="mail-content" data-mailTitle="{{mail.subject}}" data-maildescription='{"ops":[{"insert":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar feugiat consequat. Duis lacus nibh, sagittis id varius vel, aliquet non augue. Vivamus sem ante, ultrices at ex a, rhoncus ullamcorper tellus. Nunc iaculis eu ligula ac consequat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum mattis urna neque, eget posuere lorem tempus non. Suspendisse ac turpis dictum, convallis est ut, posuere sem. Etiam imperdiet aliquam risus, eu commodo urna vestibulum at. Suspendisse malesuada lorem eu sodales aliquam.\n"}]}'> Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. </p>
+
+                                    <p>{{mail.body}}</p>
+
+                                </div>
+                            </div>
+                            {% endfor %}
+                                
+                        </div>
+
+                    </div>
+                    
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="composeMailModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="modal"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                <div class="compose-box">
+                                    <div class="compose-content">
+                                        <form method="POST" id="supmit-form" action="{% url 'mail-create' %}">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="d-flex mb-4 mail-form">
+                                                        <p>From:</p>
+                                                        <input type="email" class="form-control" placeholder="From" name="mail-form" id="mail-form" value="mahmoud.elneshawy@english-er.com" readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="d-flex mb-4 mail-to">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                                        <div class="">
+                                                            <input type="text" class="form-control" placeholder="To" name="mail-to" id="mail-to" value="ALL" readonly>                                                            <span class="validation-text"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex mb-4 mail-subject">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                                <div class="w-100">
+                                                    {{mail_form.subject|add_class:"form-control"|append_attr:"placeholder:Subject"|append_attr:"id:m-subject"}}
+                                                    <span class="validation-text"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row pt-3">
+                                                <div class="col-sm-12">
+                                                    {{ mail_form.body|add_class:"demo1"|append_attr:"id:test" }}
+                                                </div>
+                                                {% for error in form.body.errors %}
+                                                    <span class="text-danger">{{ error }}</span>
+                                                {% endfor %}
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button form="supmit-form" type="submit" class="btn btn-success"> Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+{% endblock content %}
+    
+
+{% block pageleveljs %}
+<script src="{% static 'dashboard/assets/js/ie11fix/fn.fix-padStart.js' %}"></script>
+<script src="{% static 'dashboard/plugins/editors/quill/quill.js' %}"></script>
+<script src="{% static 'dashboard/plugins/sweetalerts/sweetalert2.min.js' %}"></script>
+<script src="{% static 'dashboard/plugins/notification/snackbar/snackbar.min.js' %}"></script>
+<script src="{% static 'dashboard/assets/js/apps/custom-mailbox.js' %}"></script>
+<script src="{% static 'dashboard/plugins/editors/markdown/simplemde.min.js' %}"></script>
+<script src="{% static 'dashboard/plugins/editors/markdown/custom-markdown.js' %}"></script>
+<script>
+    new SimpleMDE({
+    element: document.getElementById('test'),
+    spellChecker: false,
+    forceSync: true,
+    });
+</script>
+{% endblock pageleveljs %}

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-pmyb0z$lfp4&d@4geg%&%(!88=-5bfc2%+^%oynlhl-wsg&)-4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     'solo.apps.SoloAppConfig',
     'widget_tweaks',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -143,6 +144,19 @@ LOGOUT_URL = 'logout'
 
 EMAIL_HOST = 'mail.privateemail.com'
 EMAIL_HOST_USER = 'mahmoud.elneshawy@english-er.com'
-EMAIL_HOST_PASSWORD = 'Mm12345678'
+EMAIL_HOST_PASSWORD = 'fyow-nlbq-nsbs-luds'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Africa/Nairobi'
+
+
+MAILCHIMP_API_KEY = "53e9790d4c6bb7cd7c7abad7bc773b5b-us20"
+MAILCHIMP_DATA_CENTER = "us20"
+MAILCHIMP_EMAIL_LIST_ID = "970186d1f1"

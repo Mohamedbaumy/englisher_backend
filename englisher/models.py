@@ -157,3 +157,16 @@ class Email(models.Model):
         return self.email
 
 
+class Mail(models.Model):
+    subject = models.CharField(max_length=250)
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ("-id",)
+
+    def __str__(self):
+        return self.name
+
+
