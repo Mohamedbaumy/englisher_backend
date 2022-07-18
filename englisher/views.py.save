@@ -1,0 +1,104 @@
+from django.shortcuts import render
+from .models import Pricing, FreeVideo, Testimonials, Sponsor, FoundrFeature, Team, EnglisherFeature
+from django.contrib.auth.decorators import login_required
+from .forms import EmailForm
+from django.http import JsonResponse
+from django.conf import settings
+from mailchimp_marketing import Client
+from mailchimp_marketing.api_client import ApiClientError
+
+
+api_key = settings.MAILCHIMP_API_KEY
+server = settings.MAILCHIMP_DATA_CENTER
+list_id = settings.MAILCHIMP_EMAIL_LIST_ID
+
+
+def home(request):
+    prices = Pricing.objects.filter(active=True)[:3]
+    videos = FreeVideo.objects.filter(active=True)[:8]
+    testimonials = Testimonials.objects.filter(active=True)[:10]
+    sponsors = Sponsor.objects.filter(active=True)[:10]
+    trmplate_name = "eng_templates/home.html"
+
+    context = {
+        "prices": prices,
+        "videos": videos,
+        "testimonials": testimonials,
+        "sponsors": sponsors
+    }
+    return render(request, trmplate_name, context)
+
+
+def about_founder(request):
+    features = FoundrFeature.objects.filter(active=True)[:3]
+    trmplate_name = "eng_templates/about.html"
+
+    context = {
+        "features": features
+    }
+    return render(request, trmplate_name, context)
+
+
+def about_englisher(request):
+    features = EnglisherFeature.objects.filter(active=True)[:3]
+    trmplate_name = "eng_templates/about_englisher.html"
+
+    context = {
+        "features": features
+    }
+    return render(request, trmplate_name, context)
+
+
+def team(request):
+    teams = Team.objects.filter(active=True)
+    trmplate_name = "eng_templates/team.html"
+
+    context = {
+        "teams": teams
+    }
+    return render(request, trmplate_name, context)
+    
+
+@login_required
+def dashboard(request):
+    trmplate_name = "dashboard/base.html"
+    return render(request, trmplate_name, {})
+
+
+def subscribe(email):
+    """
+     Contains code handling the communication to the mailchimp api
+     to create a contact/member in an audience/list.
+    """
+
+    mailchimp = Client()
+    mailchimp.set_config({
+        "api_key": api_key,
+        "server": server,
+    })
+
+    member_info = {
+        "email_address": email,
+        "status": "subscribed",
+    }
+
+    try:
+        response = mailchimp.lists.add_list_member(list_id, member_info)
+        print("response: {}".format(response))
+    except ApiClientError as error:
+        print("An exception occurred: {}".format(error.text))
+
+
+def add_email(request):
+    data = {'success': False}
+    if request.method=='POST':
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            email = cd['email']
+            subscribe(email)
+            form.save()
+            data['success'] = True
+    data['message'] = "Thank you for Subscrip!"
+    return JsonResponse(data)
+

@@ -99,6 +99,6 @@ def add_email(request):
             subscribe(email)
             form.save()
             data['success'] = True
-    data['message'] = "Thank you for Subscribe!"
+    data['message'] = "Thank you for your subscription!"
     return JsonResponse(data)
 

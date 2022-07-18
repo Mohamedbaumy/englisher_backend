@@ -43,7 +43,13 @@
         </div>
     </div>
 </div>
-
+<style>
+   .mfp-iframe-scaler iframe {
+        left: 50%;
+        width: auto;
+        transform: translateX(-50%);
+    }
+</style>
 <div id="portfolio" class="portfolio row g-0 portfolio-reveal grid-container">
 
     {% for video in videos %}
